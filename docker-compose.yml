@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  posgresql_database:
+    image: postgres:12.2
+    restart: always
+    ports:
+      - "0095:5432"
+    volumes:
+      -  ./data:/var/lib/postgresql/data
+    environment: 
+      POSTGRES_DB: region-95
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+
