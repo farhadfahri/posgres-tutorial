@@ -9,7 +9,7 @@ services:
     volumes:
       -  ./data:/var/lib/postgresql/data
     environment: 
-      POSTGRES_DB: region-95
+      POSTGRES_DB: region95
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
 
