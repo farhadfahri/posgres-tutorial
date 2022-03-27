@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  posgresql_database:
+  movies-database:
     image: postgres:12.2
     restart: always
     ports:
@@ -9,7 +9,7 @@ services:
     volumes:
       -  ./data:/var/lib/postgresql/data
     environment: 
-      POSTGRES_DB: region95
+      POSTGRES_DB: movies
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
 
