@@ -121,5 +121,29 @@ DELETE FROM WHERE customer_id = '1';
 
 ### UPSERT 
 ```sql
+CREATE TABLE t_tags (
+	id SERIAL PRIMARY KEY, 
+	tag TEXT UNIQUE, 
+	update_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO t_tags (tag)
+VALUES ('Pen'), ('Pencil');
+
+-- do nothing on conflict 
+
+INSERT INTO t_tags (tag)
+VALUES ('Pencil'), ('Pennito')
+ON CONFLICT (tag) 
+DO NOTHING;
+
+-- update tag on conflict
+
+INSERT INTO t_tags (tag)
+VALUES ('Pencil')
+ON CONFLICT (tag) 
+DO UPDATE SET 
+	tag = tag.EXCLUDED
+	update_at = NOW();
 
 ```
