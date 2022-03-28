@@ -6,6 +6,8 @@
 docker-compose up -d
 ```
 
+source: [https://www.udemy.com/course/postgresqlmasterclass/]
+
 ## Database 
 
 ### Create role with password and permission
@@ -102,9 +104,22 @@ VALUES ('Leo', 'Messi', 'leo_messi@rm.com', 23) RETURNING *;
 ```sql
 
 UPDATE customers
-SET first_name = 'Leonel'
+SET 
+	first_name = 'Jacopo', 
+	last_name = 'Messina', 
+	email = 'jacopo.messina@gmail.com'
 WHERE customer_id = 1
 RETURNING *;
 
 ```
 
+### DELETE 
+
+```sql
+DELETE FROM WHERE customer_id = '1'; 
+```
+
+### UPSERT 
+```sql
+
+```
