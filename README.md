@@ -24,7 +24,7 @@ CREATE ROLE tima WITH
 
 ### Create movies database 
 ```sql
-	CREATE DATABASE movies
+CREATE DATABASE movies
     WITH 
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -43,6 +43,33 @@ CREATE TABLE actors (
 	created_at DATE, 
 	updated_at DATE
 );
+
+create table directors (
+	director_id SERIAL PRIMARY KEY,
+	first_name VARCHAR (150),
+	last_name VARCHAR (150),
+	date_of_birth DATE, 
+	created_at DATE, 
+	updated_at DATE
+);
+
+create table movies (
+	movie_id SERIAL PRIMARY KEY, 
+	movie_name VARCHAR (100) NOT NULL, 
+	movie_length INT, 
+	movie_lang VARCHAR (20), 
+	age_certificate VARCHAR (10), 
+	release_date DATE, 
+	director_id INT REFERENCES directors (director_id)
+);
+
+create table movies_revenues (
+	revenue_id SERIAL PRIMARY KEY, 
+	movie_id INT REFERENCES movies(movie_id), 
+	revenues_domestic NUMERIC (10, 2), 
+	revenues_international NUMERIC (10,2)
+);
+
 ```
 
 
