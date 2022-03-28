@@ -31,7 +31,7 @@ CREATE DATABASE movies
     CONNECTION LIMIT = -1;
 ```
 
-### CREATE TABLEs for movies database
+### CREATE TABLES for movies database
 
 ```sql
 CREATE TABLE actors (
@@ -77,6 +77,34 @@ CREATE TABLE movie_actor (
 	
 );
 
+CREATE TABLE customers (
+	customer_id SERIAL PrIMARY KEY, 
+	first_name VARCHAR(50), 
+	last_name VARCHAR (50), 
+	email VARCHAR (150),
+	age INT
+);
+
 ```
 
+### INSERT WITH RETURNING
+Once value entered it will return all the new created rows
+
+```sql
+
+INSERT INTO customers (first_name, last_name, email, age)
+VALUES ('Leo', 'Messi', 'leo_messi@rm.com', 23) RETURNING *;
+
+```
+
+### UPDATE WITH RETURNING
+
+```sql
+
+UPDATE customers
+SET first_name = 'Leonel'
+WHERE customer_id = 1
+RETURNING *;
+
+```
 
