@@ -143,7 +143,7 @@ INSERT INTO t_tags (tag)
 VALUES ('Pencil')
 ON CONFLICT (tag) 
 DO UPDATE SET 
-	tag = tag.EXCLUDED
+	tag = EXCLUDED.tag
 	update_at = NOW();
 
 ```
