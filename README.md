@@ -31,7 +31,7 @@ CREATE DATABASE movies
     CONNECTION LIMIT = -1;
 ```
 
-### Create tables for movies database
+### CREATE TABLEs for movies database
 
 ```sql
 CREATE TABLE actors (
@@ -44,7 +44,7 @@ CREATE TABLE actors (
 	updated_at DATE
 );
 
-create table directors (
+CREATE TABLE directors (
 	director_id SERIAL PRIMARY KEY,
 	first_name VARCHAR (150),
 	last_name VARCHAR (150),
@@ -53,7 +53,7 @@ create table directors (
 	updated_at DATE
 );
 
-create table movies (
+CREATE TABLE movies (
 	movie_id SERIAL PRIMARY KEY, 
 	movie_name VARCHAR (100) NOT NULL, 
 	movie_length INT, 
@@ -63,11 +63,18 @@ create table movies (
 	director_id INT REFERENCES directors (director_id)
 );
 
-create table movies_revenues (
+CREATE TABLE movies_revenues (
 	revenue_id SERIAL PRIMARY KEY, 
 	movie_id INT REFERENCES movies(movie_id), 
 	revenues_domestic NUMERIC (10, 2), 
 	revenues_international NUMERIC (10,2)
+);
+
+CREATE TABLE movie_actor (
+	movie_id INT REFERENCES movies (movie_id),
+	actor_id INT REFERENCES actors (actor_id), 
+	PRIMARY KEY (movie_id, actor_id)
+	
 );
 
 ```
