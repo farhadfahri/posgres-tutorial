@@ -147,3 +147,32 @@ DO UPDATE SET
 	update_at = NOW();
 
 ```
+
+### QUERYING DATA
+
+```sql
+SELECT first_name ]] ' ' || last_name AS "Full name" FROM actors; 
+
+```
+
+### QUERYING DATA WITH ORDER BY
+
+sorting data based on single column
+
+```sql
+SELECT * FROM actors 
+ORDER BY movie_name
+```
+
+sorting data on multiple columns sort data 
+based on ASC and DESC directions with combination
+of columns 
+
+```sql 
+SELECT * FROM actors
+ORDER BY 
+	release_data DESC,  
+	movie_name ASC
+; 
+```
+
