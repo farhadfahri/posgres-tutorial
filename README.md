@@ -151,7 +151,7 @@ DO UPDATE SET
 ### QUERYING DATA
 
 ```sql
-SELECT first_name ]] ' ' || last_name AS "Full name" FROM actors; 
+SELECT first_name || ' ' || last_name AS "Full name" FROM actors; 
 
 ```
 
