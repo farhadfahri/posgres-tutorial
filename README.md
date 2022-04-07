@@ -176,3 +176,39 @@ ORDER BY
 ; 
 ```
 
+sorting data by expression 
+```sql
+SELECT first_name, 
+LENGTH(first_name) AS characters_legth
+FROM actors
+ORDER BY characters_legth;
+```
+
+sorting data with null values
+
+by default null values will be at the end
+
+```sql
+SELECt * FROM actors
+ORDER BY first_name;
+```
+
+results in the same result
+
+```sql
+SELECT * FROM actors
+ORDER BY first_name NULLS LAST;
+```
+
+sort by descending, wii have the same result
+
+```sql
+SELECT * FROM actors
+ORDER BY first_name DESC;
+```
+
+```sql
+SELECT * FROM actors
+ORDER BY first_name NULLS LAST;
+```
+
