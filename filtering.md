@@ -53,9 +53,9 @@ BETWEEN low_value AND high_value
 ```
 
 
--- Operators to query data using 'pattern matching'
--- Returns true or false 
--- Both let you search for patterns in strings by using tow special characters 
+* Operators to query data using 'pattern matching'
+* Returns true or false 
+* Both let you search for patterns in strings by using tow special characters 
 
--- % percent sign matches any sequence of zero or more characters 
--- Underscore sign (_) matches single character
+* Percent sign (%) matches any sequence of zero or more characters 
+* Underscore sign (_) matches single character
