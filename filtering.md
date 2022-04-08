@@ -36,7 +36,7 @@ ORDER BY d.date_of_birth
 FETCH FIRST 5 ROWS only;
 ```
 
-With combination with OFFSET in cab be used either 
+With combination with OFFSET in can be used either 
 before FETCH or after FETCH
 
 ```sql
@@ -59,3 +59,17 @@ BETWEEN low_value AND high_value
 
 * Percent sign (%) matches any sequence of zero or more characters 
 * Underscore sign (_) matches single character
+
+### CONCAT, CONCAT_WS 
+
+Difference between concat and concat_ws is that the latter
+ignore dealing with rows with null value.
+
+```sql
+SELECT 
+	mr.revenues_domestic, 
+	mr.revenues_international, 
+	concat_ws(' | ', mr.revenues_domestic, mr.revenues_international)
+FROM movies_revenues mr;
+```
+
