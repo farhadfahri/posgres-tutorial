@@ -71,13 +71,16 @@ Two types of floating. Allows digits to float
 | double | allows precision point to 15 decimal digits |
 
 
-#### FLOATING TYPES
+#### DATE, TIME, TIMESTAMP, TIMESTAMPTZ
 
 Data type available
 
-| TYPE        | STORES                  |
-| ----------- | ----------------------- | 
-| Date        | Date only               |
-| Time        | Time only               |
-| Timestamp   | Date, time              |
-| Timestamptz | Date, time, timezone    |
+| TYPE        | STORES                  | KEYWORD    | FORMATS                    |
+| ----------- | ----------------------- | ---------  | -------------------------- | 
+| Date        | Date only               | DATE       | YY-MM-DD                   |
+| Time        | Time only               | TIME       | HH:MM:SS                   |
+| Timestamp   | Date, time              | DATETIME   | YY-MM-DD HH:MM:SS          |
+| Timestamptz | Date, time, timezone    | DATETIMETZ | YY-MM-DD HH:MM:SS TZ       |
+
+Internally when we saving with TZ (UTC format) is saved, however when we are
+retrieving it will be converted to TZ which is installed internally
