@@ -2,7 +2,7 @@
 
 ### Datatypes
 
-* BOOLEAN
+#### BOOLEAN
 
 Following are some valid literals for boolean values
 
@@ -15,7 +15,7 @@ Following are some valid literals for boolean values
 | 'yes'       | 'no'        |
 | '1'         | '0'         |
 
-* CHARACTERS
+#### CHARACTERS
 
 
 | CHARACTER TYPES           | NOTES                        |
@@ -24,7 +24,7 @@ Following are some valid literals for boolean values
 | VARCHAR(n)                | var length with length limit |
 | TEXT, VARCHAR             | var unlimited length         |
 
-* NUMERIC
+#### NUMERIC
 
 - Numbers column can hold various numbers but NULL values
 - Math operations can be performed on numeric columns
@@ -49,3 +49,35 @@ Following are some valid literals for boolean values
 | smallserial  | 2 bytes     | 1           | 32768               |
 | serial       | 4 bytes     | 1           | 21474836487         |
 | big serial   | 8 bytes     | 1           | 922337203685477507  |
+
+
+#### FIXED POINT NUMBERS DECIMAL
+
+numeric(precision, scale)
+
+precision scale - Maximum number of digits to the left and right of the decimal points
+
+
+decimal(precision, scale)
+
+
+#### FLOATING TYPES
+
+Two types of floating. Allows digits to float
+
+| NAME   | DESCRIPTION                                 |
+| ------ | ------------------------------------------- |
+| real   | allows precision point to 6 decimal digits  |
+| double | allows precision point to 15 decimal digits |
+
+
+#### FLOATING TYPES
+
+Data type available
+
+| TYPE        | STORES                  |
+| ----------- | ----------------------- | 
+| Date        | Date only               |
+| Time        | Time only               |
+| Timestamp   | Date, time              |
+| Timestamptz | Date, time, timezone    |
