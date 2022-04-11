@@ -84,3 +84,26 @@ Data type available
 
 Internally when we saving with TZ (UTC format) is saved, however when we are
 retrieving it will be converted to TZ which is installed internally
+
+
+#### ARRAYS
+
+- Every data type has its own companion array type.
+
+Integer has an integer[] array type and so on.
+
+```sql
+CREATE TABLE table_array(
+    id SERIAL,
+    name VARCHAR(100),
+    phone text []
+)
+
+INSERt INTO table_array 
+VALUES ('Adam', ARRAY
+        [('542-101-3992'), ('543-122-2331')]
+    );
+
+SELECT name FROM table_array
+WHERE phone[0] = '542-101-3993';
+```
