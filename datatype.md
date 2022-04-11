@@ -107,3 +107,31 @@ VALUES ('Adam', ARRAY
 SELECT name FROM table_array
 WHERE phone[0] = '542-101-3993';
 ```
+
+#### HSTORE
+
+- hstore is data type that store data into key-value pair. 
+- the hstore module implements the hstore data type.
+- the keys and values are just strings only.
+
+```sql
+
+CREATE EXTENSION IF NOT EXISTS hstore; 
+
+CREATE TABLE table_hstore (
+    book_id SERIAL PRIMARY KEY, 
+    title VARCHAR(100) NOT NULL,
+    book_info hstore
+); 
+
+INSERT INTO table_hstore(title, book_info) 
+VALUES (
+    'Ricar Pustini', 
+    '
+        "publisher" => "New Dawn", 
+        "paper_cost" => "10.00", 
+        "e_cost" => "5.85"
+    '
+);
+
+```
