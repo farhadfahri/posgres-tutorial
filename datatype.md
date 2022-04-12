@@ -134,4 +134,44 @@ VALUES (
     '
 );
 
+SELECT book_info -> 'publisher' FROM table_hstore;
 ```
+
+
+#### JSON
+- The JSON datatype is actually text under the hood, with a verification that format is valid json.
+- The JSONB implements binary version of JSON datatype.
+- The JSON datatype, being a text datatype, store the data presentation exactly as it is sent to POSTGRESQL
+including whitespace and indentification and also multiple-keys when present 
+- The JSONB is advance binary storage format with full processing, indexing and searching capabilites. 
+
+```sql
+CREATE TABLE json_table (
+    id SERIAL PRIMARY KEY, 
+    docs JSON
+);
+
+INSERT INTO json_table (docs) VALUES
+('[1,2,3,4,5,6]'),
+('[1,2,3,4,5,6]'),
+('{"key": "value"}')
+
+-- it won't work since we have to convert to JSONB
+SELECT * FROM table_json
+WHERE docs @> '2'; 
+
+
+ALTER TABLE table_json
+ALTER COLUMN docs TYPE JSONB
+
+-- adding index
+
+CREATE INDEX ON table_json USING GIN (docs->'Publisher' jsonb_path_ops);
+
+````
+
+
+
+
+
+
