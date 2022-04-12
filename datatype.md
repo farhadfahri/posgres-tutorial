@@ -168,7 +168,57 @@ ALTER COLUMN docs TYPE JSONB
 
 CREATE INDEX ON table_json USING GIN (docs->'Publisher' jsonb_path_ops);
 
-````
+```
+
+#### NETWORK ADDRESSES
+
+1. Postgresql offers data types to store IPv4, IPv6, and MAC addresses. 
+2. Network address types: 
+
+| Name     | Storage size  | Notes                              |
+| -------- | ------------- | ---------------------------------- |
+| cidr     | 7 or 19 bytes | IPv4 and IPv6 networks             |
+| inet     | 7 or 19 bytes | IPv4 and IPv6 hosts and networks   |
+| macaddr  | 8 bytes       | MAC addresses                      |
+| macaddr8 | 8 bytes       | MAC addresses                      |
+
+it is better to use these types instead of text to store network addresses
+because these types offer input error checking and speciliazed operators and 
+functions. 
+
+
+3. Special soring mechanism
+
+When sorting inet or cidr data types, IPv4 addresses will always sort before IPv6 addresses,
+including IPv4 addresses encapsulated or mapped to IPv6 addresses. 
+
+4. Index types are bundle with indexing support and advanced functions and operator support.
+
+
+```sql
+CREATE TABLE table_netaddr (
+    id SERIAL PRIMARY KEY, 
+    ip INET
+)
+
+INSERT INTO table_netaddr (ip) VALUES
+('4.35.221.243'),
+('4.152.207.128'),
+('4.152.207.238'),
+('12.1.223.132'),
+('12.8.192.60'),
+
+SELECT 
+    ip, 
+    set_masklen(ip, 24) as inet_24, 
+    set_masklen(ip::cidr, 24) as cidr_24, 
+    set_masklen(ip::cidr, 27) as cidr_27, 
+    set_masklen(ip::cidr, 28) as cidr_28
+
+FROM table_netaddr;
+
+```
+
 
 
 
