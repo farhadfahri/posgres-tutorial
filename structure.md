@@ -80,8 +80,56 @@ USING age::integer;
 ```
 
 
+#### TYPE CONVERSION
 
+CAST (expression AS target_data_type)
 
+```sql
+SELECT CAST('10' AS INTEGER) --  => 10
+SELECT CAST('10n' AS INTEGER) -- => error
+
+SELECT CAST('2021-12-21' AS DATE) -- => 2021-12-21
+SELECT CAST('01-MAY-2020' AS DATE) -- => 2020-06-01
+
+SELECT CAST('true' AS BOOLEAN) -- => true
+SELECT CAST('false' AS BOOLEAN)-- => false
+SELECT CAST('T' AS BOOLEAN) -- => true 
+SELECT CAST('F' AS BOOLEAN)-- => false
+SELECT CAST('1' AS BOOLEAN) -- => true
+SELECT CAST('0' AS BOOLEAN) -- => false
+
+SELECT CAST ('14,7888' AS DOUBLE PRECISION) -- => 14.7888
+
+```
+
+expression::type
+
+```sql
+SELECT 
+'10'::INTEGER,
+'2020-12-12'::DATE
+'2020-12-22 10:30:25.467'::TIMESTAMP
+'2020-12-22 10:30:25.467'::TIMESTAMPTZ
+
+-- interval
+'10 minute'::interval
+'4 hours'::interval
+'1 day':: interval
+```
+
+#### CONVERSION FUNCTIONS
+
+1. Postgres to_char functions allow converion of
+- a timestamp
+- an interval
+- an integer
+- a double-precision 
+- numeric value
+
+2. TO_CHAR(expression, format)
+3. TO_NUM(string, format)
+4. TO_DATE(text, format)
+5. TO_TIMESTAMP(timestamp, format)
 
 
 
