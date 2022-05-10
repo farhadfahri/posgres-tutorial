@@ -53,3 +53,21 @@ ADD column postal_code us_postal_code;
     DROP DOMAIN positive_numeric
 ```
 
+- will delete the column it depends on, extra careful
+
+```sql
+    DROP DOMAIN positive_numeric CASCADE
+```
+
+- save way to delete domain name
+
+```sql 
+    ALTER TABLE locations
+    ALTER COLUMN apartment TYPE INT
+
+    DROP DOMAIN positive_numeric;
+``` 
+
+
+
+
