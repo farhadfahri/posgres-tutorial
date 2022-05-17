@@ -86,7 +86,21 @@ ADD column postal_code us_postal_code;
     (ROW('NEw YORK', 'US'));
 
     SELECT (address).country FROM companies;
+```
 
+```sql
+    CREATE TYPE currency AS ENUM('USD', 'EUR', 'GBP')
 
+    ALTER TYPE currency ADD VALUE 'CHF' AFTER 'EUR';
+
+    CREATE TABLE stocks (
+        stock_id SEERIAL PRIMARY KEY, 
+        stock_currency currency
+    )
+
+    INSERT INTO stocks (stock_currency) VALUES ('USD');
+
+    -- to drop type
+    DROP TYPE currency;
 ```
 
