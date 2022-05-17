@@ -104,3 +104,39 @@ ADD column postal_code us_postal_code;
     DROP TYPE currency;
 ```
 
+### ALtER A TYPE
+
+```sql 
+    CREATE TYPE myaddress AS (
+        city VARCHAR(50), 
+        country VARCHAR(20)
+    );
+
+    ALTER TYPE myaddress RENAME TO corporate_address;
+
+    -- change owner
+
+    ALTER TYPE corporate_address OWNER TO adam;
+
+    -- change schema
+
+    ALTER TYPE corporate_address SET SCHEMA pl;
+
+    -- add new attribute
+
+    ALTER TYPE pl.corporate_address ADD ATTRIBUTE street_address VARCHAR(150);
+```
+
+### ALTER ENUM TYPES
+
+```sql
+    CREATE TYPE colors AS ENUM ('GREEN', 'RED', 'BLUE');
+
+    ALTER TYPE colors RENAME 'RED' TO 'ORANGE';
+
+    -- select all enum values 
+
+    SELECT enum_range(NULL::colors);
+
+    ALTER TYPE colors ADD VALUE 'PURPLE' AFTER 'RED';
+```
