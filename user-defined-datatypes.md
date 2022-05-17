@@ -68,6 +68,25 @@ ADD column postal_code us_postal_code;
     DROP DOMAIN positive_numeric;
 ``` 
 
+### CREATE A TYPE
+
+```sql
+    CREATE TYPE address_format AS (
+        city VARCHAR(50), 
+        country VARCHAR(20)
+    );
+
+    CREATE TABLE companies (
+        comp_id SERIAL PRImARY KEY, 
+        address address_format
+    );
+
+    INSERT INTO companies VALUES
+    (ROW('LONDON', 'UK')),
+    (ROW('NEw YORK', 'US'));
+
+    SELECT (address).country FROM companies;
 
 
+```
 
