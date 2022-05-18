@@ -33,5 +33,9 @@
         price > 0
         AND discount >= 0
         AND price > discount
-    )
+    ); 
+
+
+    ALTER TABLE staff RENAME CONSTRAINT price_check TO price_discount_check
+    ALTER TABLE staff DROP CONSTRAINT price_discount_check
 ```
