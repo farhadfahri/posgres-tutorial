@@ -114,4 +114,13 @@
         apple_name VARCHAR(50)
     )
 
+    -- create alphanumeric sequnce
+
+    CREATE SEQUENCE table_seq
+
+    CREATE TABLE contacts (
+        contact_id TEXT NOT NULL DEFAULT ('ID' || nextval('table_seq')), 
+        contact_name VARCHAR(150)
+    )
+
 ```
