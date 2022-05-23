@@ -99,4 +99,19 @@
 
     ALTER TABLE melons 
     ALTER COLUMN user_number SET DEFAULT nextval('personal_number');
+
+    -- single sequence shared by both tables
+
+    CREATE SEQUENCE common_sequence START WITH 100;
+
+    CREATE TABLE phones (
+        apple_id INT DEFAULT nextval('common_sequence') NOT NULL, 
+        apple_name VARCHAR(50)
+    )
+
+     CREATE TABLE laptops (
+        apple_serial_number INT DEFAULT nextval('common_sequence') NOT NULL, 
+        apple_name VARCHAR(50)
+    )
+
 ```
