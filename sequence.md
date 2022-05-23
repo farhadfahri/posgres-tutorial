@@ -44,7 +44,7 @@
     ALTER SEQUENCE test_seq RENAME TO my_sequence;
 ```
 
-### START WITH, MAX, MIN VALUES
+### START WITH, MAX, MIN VALUES, DROP SEQUENCES
 ```sql
     CREATE SEQUENCE IF NOT EXISTS increment_value
     INCREMENT 50
@@ -68,4 +68,35 @@
     MAXVALUE 3
     START 3
     CYCLE;
+
+    -- drop sequence
+
+    DROP SEQUENCE seq_des;
+```
+
+### ATTACH SEQUENCE
+
+```sql
+    -- serial datatype create default sequence
+
+    CREATE TABLE users (
+        user_id SERIAL PRIMARY KEY, 
+        user_name VARCHAR(50)
+    )
+    -- default dequence table_columnname_seq
+    ALTER SEQUENCE users_user_id_seq RESTART WITH 100; 
+
+
+    -- create table and attach sequence
+
+    CREATE TABLE melons (
+        user_number INT PRIMARY KEY, 
+        user_location VARCHAR(50)
+    )
+
+    CREATE SEQUENCE IF NOT EXIST personal_number
+    START WITH 100 OWNED BY melons.user_number;
+
+    ALTER TABLE melons 
+    ALTER COLUMN user_number SET DEFAULT nextval('personal_number');
 ```
