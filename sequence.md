@@ -29,3 +29,43 @@
 ```
 
 ### RENAME, ALTER SEQUENCE
+
+```sql
+    SELECT nextval('test-seq')
+    -- => 206
+
+    -- restart the sequence
+
+    ALTER SEQUENCE test_seq RESTART WITH 100; 
+    SELECT nextval('test_seq');
+
+    -- => 100
+
+    ALTER SEQUENCE test_seq RENAME TO my_sequence;
+```
+
+### START WITH, MAX, MIN VALUES
+```sql
+    CREATE SEQUENCE IF NOT EXISTS increment_value
+    INCREMENT 50
+    MINVALUE 400
+    MAXVALUE 6000
+    START WITH 500
+
+    SELECT nextval('increment_value');
+
+    -- => 500, 550, 600
+
+    -- specify data types of sequence
+
+    CREATE SEQUENCE IF NOT EXISTS test_seq_smallint AS SMALLINT;
+
+    -- create a descending sequence and cycle, by default it will create in ascending order
+
+    CREATE SEQUENCE seq_des
+    INCREMENT -1
+    MINVALUE 1
+    MAXVALUE 3
+    START 3
+    CYCLE;
+```
