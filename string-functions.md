@@ -75,4 +75,14 @@
         TRIM('  Amazing Posgresql   ')
 
     -- all result in => 'Amazing Posgresql'
+
+
+    -- remove leading zero 
+
+    SELECT 
+        TRIM (
+            LEADING '0'
+            FROM 
+                CAST (00012345 AS CAST)
+        );
 ```
