@@ -14,7 +14,7 @@
 
     SELECT LOWER('Amazing Posgresql');
 
-    -- Init
+    -- write first letters in capital letter
 
     SELECT INITCAP ('the world is changing with a lightning speed'); 
 
@@ -85,4 +85,33 @@
             FROM 
                 CAST (00012345 AS CAST)
         );
+```
+
+### TRIM, LTRIM, RTRIM, BRIM
+
+```sql
+    -- function pads a string on the left to a specified length with a sequence of characters
+
+    LPAD(string, length[, length])
+
+    -- the fill argument is optional. If you omit the fill argument, its default value is space
+
+    SELECT LPAD('Database', 5, '*') -- => *****Database 
+```
+
+### SUBSTRING, REPLACE
+
+```sql
+    SELECT substring ('What a wonderful world' from 1 for 4) -- => What
+    SELECT substring ('What a wonderful world' for 7) -- => What a
+
+    SELECT  
+        first_name, 
+        last_name, 
+        SUBSTRING(first_name, 1, 1) AS initial
+    FROM 
+        directors
+    ORDER BY 
+        last_name
+
 ```
